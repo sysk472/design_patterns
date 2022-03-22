@@ -1,11 +1,11 @@
-from patterns.template_method.daniel import Daniel
-from patterns.template_method.environment import Environment
-from patterns.template_method.health import Health
-from patterns.template_method.little_shits import LittleShits
-from patterns.template_method.sylwia import Sylwia
+from patterns.template_method.human.daniel import Daniel
+from patterns.template_method.human.sylwia import Sylwia
+from patterns.template_method.types.environment import Environment
+from patterns.template_method.types.health import Health
+from patterns.template_method.types.little_shits import LittleShits
 
 
-def test_daniel_does_not_care_when_little_shits_are_loud():
+def test_daniel_does_not_care_when_little_shits_are_loud_he_just_sleeps_it_off():
     human = Daniel(environment=Environment(little_shits=LittleShits.LOUD))
     human.live_for(weeks=2)
     assert human.mental_health == Health(100)

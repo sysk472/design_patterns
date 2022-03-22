@@ -1,4 +1,4 @@
-from patterns.template_method.little_shits import LittleShits
+from patterns.template_method.types.little_shits import LittleShits
 
 
 class Environment:

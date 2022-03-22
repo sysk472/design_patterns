@@ -1,7 +1,7 @@
-from patterns.template_method.environment import Environment
-from patterns.template_method.health import Health
-from patterns.template_method.little_shits import LittleShits
-from patterns.template_method.sylwia import Sylwia
+from patterns.template_method.human.sylwia import Sylwia
+from patterns.template_method.types.environment import Environment
+from patterns.template_method.types.health import Health
+from patterns.template_method.types.little_shits import LittleShits
 
 
 def test_sylwia_poisons_little_shits_and_life_is_good_again():

@@ -1,4 +1,4 @@
-from patterns.template_method.human import Human
+from patterns.template_method.human.human import Human
 
 
 class Daniel(Human):

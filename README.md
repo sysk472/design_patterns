@@ -29,3 +29,11 @@ Run tests
 ```shell
 make tests
 ```
+
+***
+
+Format code
+
+```shell
+make lint
+```

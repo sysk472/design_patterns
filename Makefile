@@ -11,7 +11,11 @@ install:
 	. .venv/$(directory)/activate; pip install -r requirements.txt
 
 tests:
+	. .venv/$(directory)/activate; isort . --check; black . --check
 	. .venv/$(directory)/activate; PYTHONPATH=. pytest .
+
+lint:
+	. .venv/$(directory)/activate; isort .; black .
 
 clean:
 	rm -rf .venv
