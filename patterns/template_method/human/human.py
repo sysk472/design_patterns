@@ -18,13 +18,14 @@ class Human:
             insanity_threshold if insanity_threshold is not None else Health(30)
         )
 
-    def sleep(self, hours: int = 8) -> None:
-        self.mental_health.increment(hours)
-
-    def work(self, hours: int = 8) -> None:
-        self.mental_health.decrement(
-            hours * (1 + self.fatigue_modifiers[self.environment.little_shits])
-        )
+    def live_for(self, weeks: int) -> None:
+        for _ in range(weeks):
+            for _ in range(5):
+                self._weekday()
+                self._consider_poisoning_those_fucking_little_shits()
+            for _ in range(2):
+                self._weekend()
+                self._consider_poisoning_those_fucking_little_shits()
 
     @property
     def fatigue_modifiers(self) -> Dict[LittleShits, int]:
@@ -34,28 +35,26 @@ class Human:
             LittleShits.DEAD: 0,
         }
 
-    def leisure(self, hours: int = 8) -> None:
-        self.mental_health.increment(hours // 5)
+    def sleep(self, hours: int = 8) -> None:
+        self.mental_health.get_better(hours)
 
-    def weekday(self) -> None:
+    def work(self, hours: int = 8) -> None:
+        self.mental_health.get_worse(
+            hours * (1 + self.fatigue_modifiers[self.environment.little_shits])
+        )
+
+    def rest(self, hours: int = 8) -> None:
+        self.mental_health.get_better(hours // 5)
+
+    def _weekday(self) -> None:
         self.work()
-        self.leisure()
+        self.rest()
         self.sleep()
-        if self.mental_health < self.insanity_threshold:
-            self.poison_those_fucking_little_shits()
 
-    def weekend(self) -> None:
-        self.leisure(hours=16)
+    def _weekend(self) -> None:
+        self.rest(hours=16)
         self.sleep()
+
+    def _consider_poisoning_those_fucking_little_shits(self) -> None:
         if self.mental_health < self.insanity_threshold:
-            self.poison_those_fucking_little_shits()
-
-    def live_for(self, weeks: int) -> None:
-        for _ in range(weeks):
-            for _ in range(5):
-                self.weekday()
-            for _ in range(2):
-                self.weekend()
-
-    def poison_those_fucking_little_shits(self) -> None:
-        self.environment.little_shits = LittleShits.DEAD
+            self.environment.little_shits = LittleShits.DEAD
