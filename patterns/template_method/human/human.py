@@ -1,5 +1,3 @@
-from typing import Dict
-
 from patterns.template_method.types.environment import Environment
 from patterns.template_method.types.health import Health
 from patterns.template_method.types.little_shits import LittleShits
@@ -27,24 +25,14 @@ class Human:
                 self.__weekend()
                 self.__consider_poisoning_those_fucking_little_shits()
 
-    @property
-    def _fatigue_modifiers(self) -> Dict[LittleShits, int]:
-        return {
-            LittleShits.QUIET: 0,
-            LittleShits.LOUD: 1,
-            LittleShits.DEAD: 0,
-        }
-
     def _sleep(self, hours: int = 8) -> None:
-        self.mental_health.get_better(hours)
+        raise NotImplementedError
 
     def _work(self, hours: int = 8) -> None:
-        self.mental_health.get_worse(
-            hours * (1 + self._fatigue_modifiers[self.environment.little_shits])
-        )
+        raise NotImplementedError
 
     def _rest(self, hours: int = 8) -> None:
-        self.mental_health.get_better(hours // 5)
+        raise NotImplementedError
 
     def __weekday(self) -> None:
         self._work()

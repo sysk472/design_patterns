@@ -2,8 +2,8 @@
 
 ## Local setup
 
-Install python 3.x
-Install make
+- Install python 3.x
+- Install make
 
 ## Commands
 
