@@ -5,7 +5,10 @@ class Daniel(Human):
     def _sleep(self, hours: int = 10) -> None:
         self.mental_health.get_better(hours)
 
-    def _rest(self, hours: int = 8) -> None:
+    def _work(self, hours: int = 8) -> None:
+        self.mental_health.get_worse(hours)
+
+    def _rest(self, hours: int = 6) -> None:
         self.mental_health.get_better(hours // 5)
         self.__go_to_toilet(minutes=30)
 
